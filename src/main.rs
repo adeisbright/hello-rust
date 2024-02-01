@@ -1,6 +1,7 @@
 use ferris_says::say ; 
 use std::io::{stdout ,stdin ,  BufWriter} ; 
 use rand::Rng; 
+use std::cmp::Ordering ;
 
 fn main() {
     let stdout  = stdout() ; 
@@ -14,5 +15,12 @@ fn main() {
     println!("Guess the Number Game Comes Below. Now, Guess a number : ");
     let mut guess = String::new() ;
     stdin().read_line(&mut guess).expect("Failed to Read Lines");
+    let guess: u32 = guess.trim().parse().expect("Please type a number!");
     println!("You guessed {guess}");
+
+    match guess.cmp(&secret_number){
+        Ordering::Less => println!("Too Small"),
+        Ordering::Greater => println!("Too big!"),
+        Ordering::Equal => println!("You win!"),
+    }
 }
