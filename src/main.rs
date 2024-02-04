@@ -25,6 +25,16 @@ fn build_user(name : String , age : u64) -> User {
 fn print_user(user : User){
     println!("Is user active? {active} . User name is {name} , age is {age}" , name=user.name , age=user.age , active=user.active); //Use positional argument
 }
+
+//Using struct to manage complexity 
+struct Rectangle {
+    width : u32 ,
+    height : u32,
+}
+
+fn area(rectangle :  &Rectangle) -> u32 {
+    rectangle.width * rectangle.height
+}
 fn main() {
     let stdout  = stdout() ; 
     let message = String::from("Hello Fellow Rustaceans") ;
@@ -85,4 +95,10 @@ fn main() {
     print_user(user1);
     let user2 = build_user(String::from("Timothy"), 20);
     print_user(user2);
+    // let user3  = User{
+    //     active : false , 
+    //     ..user1
+    // };
+    let area = area(&Rectangle{width : 3 , height : 4});
+    println!("The area is {area} :" , area = area);
 }
