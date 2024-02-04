@@ -7,6 +7,12 @@ fn echo_name(){
     println!("I am printing out your name") ; 
 }
 
+struct User {
+    name : String,
+    active : bool,
+    age : u64
+}
+
 fn main() {
     let stdout  = stdout() ; 
     let message = String::from("Hello Fellow Rustaceans") ;
@@ -62,5 +68,12 @@ fn main() {
     }else{
         println!("Todays date is {todays_date} : You should be enjoying your weekend");
     }
+    //Working with Struct 
+    let user = User {
+        name : String::from("James Faleke") ,
+        age : 29 , 
+        active : true 
+    };
     
+    println!("Is user active? {active} . User name is {name} , age is {age}" , name=user.name , age=user.age , active=user.active); //Use positional argument
 }
