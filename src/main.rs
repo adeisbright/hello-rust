@@ -13,6 +13,18 @@ struct User {
     age : u64
 }
 
+//Build user 
+fn build_user(name : String , age : u64) -> User {
+    User {
+        active : true,
+        name , 
+        age
+    }
+}
+//Print User 
+fn print_user(user : User){
+    println!("Is user active? {active} . User name is {name} , age is {age}" , name=user.name , age=user.age , active=user.active); //Use positional argument
+}
 fn main() {
     let stdout  = stdout() ; 
     let message = String::from("Hello Fellow Rustaceans") ;
@@ -69,11 +81,8 @@ fn main() {
         println!("Todays date is {todays_date} : You should be enjoying your weekend");
     }
     //Working with Struct 
-    let user = User {
-        name : String::from("James Faleke") ,
-        age : 29 , 
-        active : true 
-    };
-    
-    println!("Is user active? {active} . User name is {name} , age is {age}" , name=user.name , age=user.age , active=user.active); //Use positional argument
+    let user1 = build_user(String::from("Jonah"), 35);
+    print_user(user1);
+    let user2 = build_user(String::from("Timothy"), 20);
+    print_user(user2);
 }
