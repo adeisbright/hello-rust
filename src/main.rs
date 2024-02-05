@@ -6,7 +6,7 @@ use std::cmp::Ordering ;
 fn echo_name(){
     println!("I am printing out your name") ; 
 }
-
+#[derive(Debug)]
 struct User {
     name : String,
     active : bool,
@@ -92,13 +92,12 @@ fn main() {
     }
     //Working with Struct 
     let user1 = build_user(String::from("Jonah"), 35);
+    println!("user1 is {:#?}" , user1);
     print_user(user1);
     let user2 = build_user(String::from("Timothy"), 20);
     print_user(user2);
-    // let user3  = User{
-    //     active : false , 
-    //     ..user1
-    // };
+    
     let area = area(&Rectangle{width : 3 , height : 4});
     println!("The area is {area} :" , area = area);
+   
 }
