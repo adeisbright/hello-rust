@@ -32,9 +32,12 @@ struct Rectangle {
     height : u32,
 }
 
-fn area(rectangle :  &Rectangle) -> u32 {
-    rectangle.width * rectangle.height
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
 }
+
 fn main() {
     let stdout  = stdout() ; 
     let message = String::from("Hello Fellow Rustaceans") ;
@@ -97,7 +100,12 @@ fn main() {
     let user2 = build_user(String::from("Timothy"), 20);
     print_user(user2);
     
-    let area = area(&Rectangle{width : 3 , height : 4});
-    println!("The area is {area} :" , area = area);
+    let rect : Rectangle = Rectangle {
+        width : 3 ,
+        height : 4,
+    };
+
+    //let area = area(&Rectangle{width : 3 , height : 4});
+    println!("The area is {area} :" , area = rect.area());
    
 }
