@@ -36,6 +36,17 @@ impl Rectangle {
     fn area(&self) -> u32 {
         self.width * self.height
     }
+
+    fn can_hold(&self , other : &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
+    //An Example of an associated function that can be used to create new instance
+    fn square(size : u32) -> Self {
+        Self {
+            height : size,
+            width : size
+        }
+    }
 }
 
 fn main() {
@@ -100,12 +111,19 @@ fn main() {
     let user2 = build_user(String::from("Timothy"), 20);
     print_user(user2);
     
-    let rect : Rectangle = Rectangle {
+    let rect1 : Rectangle = Rectangle {
         width : 3 ,
         height : 4,
     };
 
     //let area = area(&Rectangle{width : 3 , height : 4});
-    println!("The area is {area} :" , area = rect.area());
-   
+    println!("The area is {area} :" , area = rect1.area());
+    let rect2 : Rectangle = Rectangle {
+        width : 2 ,
+        height : 5,
+    };
+    println!("Can rect1 hold rect2 ? {} :" , rect1.can_hold(&rect2));
+    let sq = Rectangle::square(4);
+    
+    println!("Square Area is {} meter square" , sq.area());
 }
