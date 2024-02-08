@@ -126,4 +126,48 @@ fn main() {
     let sq = Rectangle::square(4);
     
     println!("Square Area is {} meter square" , sq.area());
+
+    let x = 5;
+    let y = x; 
+    println!("The value of x is {x} , y is {y}" , x = x  , y=y);//x is still available because it is a Literal 
+    let s1 = String::from("hello");
+    let s2 = s1; //After this borrowing, s1 is dropped from the memory 
+    //Trying to access s1 anywhere down below in your code is an error 
+    println!("The value of s2 is {s2}" , s2=s2);
+    //Doing copy 
+    let s3 = s2.clone() ; //Copy the heap data also alongside data stored in stack
+
+    println!("s2 = {}, s3 = {}", s2, s3);
+    let the_string = String::from("New String");
+    takes_ownership(the_string);
+    // println!("Is the string visible here ? {}" , the_string); //Error 
+
+    let x = 5;                      // x comes into scope
+
+    makes_copy(x);     // x would move into the function,
+                                    // but i32 is Copy, so it's okay to still
+                                    // use x afterward
+
+    let len = calculate_length(&s2);
+
+    println!("The length of '{}' is {}.", s2, len); 
+    let mut s4 = String::from("Adeleke");
+    change(&mut s4);
+    println!("{}" , s2);
+}
+
+fn takes_ownership(some_string : String) {  //some_string comes into scope
+    println!("{}",some_string); //It is used here 
+} //It is no longer available outside here 
+
+fn makes_copy(some_integer: i32) { // some_integer comes into scope
+    println!("{}", some_integer);
+} // Here, some_integer goes out of scope. Nothing special happens.
+
+fn calculate_length(s: &String) -> usize {
+    s.len()
+}
+
+fn change(some_string: &mut String) {
+    some_string.push_str(", world");
 }
