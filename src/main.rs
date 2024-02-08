@@ -138,5 +138,21 @@ fn main() {
     let s3 = s2.clone() ; //Copy the heap data also alongside data stored in stack
 
     println!("s2 = {}, s3 = {}", s2, s3);
+    let the_string = String::from("New String");
+    takes_ownership(the_string);
+    // println!("Is the string visible here ? {}" , the_string); //Error 
 
+    let x = 5;                      // x comes into scope
+
+    makes_copy(x);     // x would move into the function,
+                                    // but i32 is Copy, so it's okay to still
+                                    // use x afterward
 }
+
+fn takes_ownership(some_string : String) {  //some_string comes into scope
+    println!("{}",some_string); //It is used here 
+} //It is no longer available outside here 
+
+fn makes_copy(some_integer: i32) { // some_integer comes into scope
+    println!("{}", some_integer);
+} // Here, some_integer goes out of scope. Nothing special happens.
