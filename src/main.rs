@@ -147,6 +147,13 @@ fn main() {
     makes_copy(x);     // x would move into the function,
                                     // but i32 is Copy, so it's okay to still
                                     // use x afterward
+
+    let len = calculate_length(&s2);
+
+    println!("The length of '{}' is {}.", s2, len); 
+    let mut s4 = String::from("Adeleke");
+    change(&mut s4);
+    println!("{}" , s2);
 }
 
 fn takes_ownership(some_string : String) {  //some_string comes into scope
@@ -156,3 +163,11 @@ fn takes_ownership(some_string : String) {  //some_string comes into scope
 fn makes_copy(some_integer: i32) { // some_integer comes into scope
     println!("{}", some_integer);
 } // Here, some_integer goes out of scope. Nothing special happens.
+
+fn calculate_length(s: &String) -> usize {
+    s.len()
+}
+
+fn change(some_string: &mut String) {
+    some_string.push_str(", world");
+}
