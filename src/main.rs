@@ -126,4 +126,17 @@ fn main() {
     let sq = Rectangle::square(4);
     
     println!("Square Area is {} meter square" , sq.area());
+
+    let x = 5;
+    let y = x; 
+    println!("The value of x is {x} , y is {y}" , x = x  , y=y);//x is still available because it is a Literal 
+    let s1 = String::from("hello");
+    let s2 = s1; //After this borrowing, s1 is dropped from the memory 
+    //Trying to access s1 anywhere down below in your code is an error 
+    println!("The value of s2 is {s2}" , s2=s2);
+    //Doing copy 
+    let s3 = s2.clone() ; //Copy the heap data also alongside data stored in stack
+
+    println!("s2 = {}, s3 = {}", s2, s3);
+
 }
