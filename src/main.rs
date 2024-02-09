@@ -154,6 +154,9 @@ fn main() {
     let mut s4 = String::from("Adeleke");
     change(&mut s4);
     println!("{}" , s2);
+    let test_word = String::from("  Money and Fame") ; 
+    let result = first_word(&test_word);
+    println!("The result is {}" , result);
 }
 
 fn takes_ownership(some_string : String) {  //some_string comes into scope
@@ -170,4 +173,14 @@ fn calculate_length(s: &String) -> usize {
 
 fn change(some_string: &mut String) {
     some_string.push_str(", world");
+}
+
+fn first_word(s : &String) -> &str {
+    let bytes =  s.as_bytes();
+    for (i , &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i] ;
+        }
+    }
+    &s[..]
 }
