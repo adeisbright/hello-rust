@@ -49,6 +49,7 @@ impl Rectangle {
     }
 }
 
+
 fn main() {
     let stdout  = stdout() ; 
     let message = String::from("Hello Fellow Rustaceans") ;
@@ -157,6 +158,18 @@ fn main() {
     let test_word = String::from("  Money and Fame") ; 
     let result = first_word(&test_word);
     println!("The result is {}" , result);
+    //Working with enum 
+    enum IPAddress {
+        V4(String),
+        V6(String),
+    }
+    #[derive(Debug)];
+    let use_enum = IPAddress::V4(String::from("127.0.0.1")); 
+
+   
+    println!("Na use_num {:?}" ,use_enum);
+
+
 }
 
 fn takes_ownership(some_string : String) {  //some_string comes into scope
