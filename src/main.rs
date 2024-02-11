@@ -49,6 +49,37 @@ impl Rectangle {
     }
 }
 
+ #[derive(Debug)]
+ //Working with enum 
+ enum IPAddress {
+    V4(String),
+    _V6(String),
+}
+
+//Elaborate Example with 
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter,
+}
+
+fn value_in_cents(coin: Coin) -> u8 {
+    match coin {
+        Coin::Penny => {
+            println!("Lucky penny!");
+            1
+        }
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => 25,
+    }
+}
+
+fn add_fancy_hat() {}
+fn remove_fancy_hat() {}
+fn reroll() {}
+
 
 fn main() {
     let stdout  = stdout() ; 
@@ -158,16 +189,18 @@ fn main() {
     let test_word = String::from("  Money and Fame") ; 
     let result = first_word(&test_word);
     println!("The result is {}" , result);
-    //Working with enum 
-    enum IPAddress {
-        V4(String),
-        V6(String),
-    }
-    #[derive(Debug)];
-    let use_enum = IPAddress::V4(String::from("127.0.0.1")); 
-
    
-    println!("Na use_num {:?}" ,use_enum);
+    let use_enum = IPAddress::V4(String::from("127.0.0.1"));
+
+    println!("Na use_enum {:?}", use_enum);
+
+    let dice_roll = 9;
+    match dice_roll {
+        3 => add_fancy_hat(),
+        7 => remove_fancy_hat(),
+        _ => reroll(),
+    }
+
 
 
 }
