@@ -1,7 +1,10 @@
+extern crate hello_rust;
+
 use ferris_says::say ; 
 use std::io::{stdout ,stdin ,  BufWriter} ; 
 use rand::Rng; 
 use std::cmp::Ordering ;
+use hello_rust::english::greetings;
 
 fn echo_name(){
     println!("I am printing out your name") ; 
@@ -57,24 +60,24 @@ impl Rectangle {
 }
 
 //Elaborate Example with 
-enum Coin {
-    Penny,
-    Nickel,
-    Dime,
-    Quarter,
-}
+// enum Coin {
+//     Penny,
+//     Nickel,
+//     Dime,
+//     Quarter,
+// }
 
-fn value_in_cents(coin: Coin) -> u8 {
-    match coin {
-        Coin::Penny => {
-            println!("Lucky penny!");
-            1
-        }
-        Coin::Nickel => 5,
-        Coin::Dime => 10,
-        Coin::Quarter => 25,
-    }
-}
+// fn value_in_cents(coin: Coin) -> u8 {
+//     match coin {
+//         Coin::Penny => {
+//             println!("Lucky penny!");
+//             1
+//         }
+//         Coin::Nickel => 5,
+//         Coin::Dime => 10,
+//         Coin::Quarter => 25,
+//     }
+// }
 
 fn add_fancy_hat() {}
 fn remove_fancy_hat() {}
@@ -207,6 +210,8 @@ fn main() {
         _ => (),
     }
 
+    println!("Hello in English {}" , hello_rust::english::greetings::hello());
+    println!("Hello in English using use keyword import pattern {}" , greetings::hello());
 
 }
 
