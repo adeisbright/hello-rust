@@ -5,7 +5,8 @@ use std::io::{stdout ,stdin ,  BufWriter} ;
 use rand::Rng; 
 use std::cmp::Ordering ;
 use hello_rust::english::greetings;
-
+use std::fs::File ; 
+use std::io::ErrorKind;
 fn echo_name(){
     println!("I am printing out your name") ; 
 }
@@ -211,7 +212,22 @@ fn main() {
     }
 
     println!("Hello in English {}" , hello_rust::english::greetings::hello());
-    println!("Hello in English using use keyword import pattern {}" , greetings::hello());
+    println!("Hello in English using use keyword import pattern {}" , greetings::hello()); 
+    //panic!("Crash and Abort");
+    let greetings_file_result = File::open("hello.txt") ; 
+    let greetings_file = match greetings_file_result  {
+        Ok(file) => file ,
+        Err(error) => match error.kind() {
+            ErrorKind::NotFound => match File::create("hello.txt") {
+                Ok(fc) => fc,
+                Err(e) => panic!("Problem creating the file: {:?}", e),
+            },
+            other_error => {
+                panic!("Problem opening the file: {:?}", other_error);
+            }
+        },
+    };
+
 
 }
 
