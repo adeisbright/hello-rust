@@ -1,7 +1,10 @@
+extern crate hello_rust;
+
 use ferris_says::say ; 
 use std::io::{stdout ,stdin ,  BufWriter} ; 
 use rand::Rng; 
 use std::cmp::Ordering ;
+use hello_rust::english::greetings;
 
 fn echo_name(){
     println!("I am printing out your name") ; 
@@ -48,6 +51,38 @@ impl Rectangle {
         }
     }
 }
+
+ #[derive(Debug)]
+ //Working with enum 
+ enum IPAddress {
+    V4(String),
+    _V6(String),
+}
+
+//Elaborate Example with 
+// enum Coin {
+//     Penny,
+//     Nickel,
+//     Dime,
+//     Quarter,
+// }
+
+// fn value_in_cents(coin: Coin) -> u8 {
+//     match coin {
+//         Coin::Penny => {
+//             println!("Lucky penny!");
+//             1
+//         }
+//         Coin::Nickel => 5,
+//         Coin::Dime => 10,
+//         Coin::Quarter => 25,
+//     }
+// }
+
+fn add_fancy_hat() {}
+fn remove_fancy_hat() {}
+fn reroll() {}
+
 
 fn main() {
     let stdout  = stdout() ; 
@@ -154,6 +189,30 @@ fn main() {
     let mut s4 = String::from("Adeleke");
     change(&mut s4);
     println!("{}" , s2);
+    let test_word = String::from("  Money and Fame") ; 
+    let result = first_word(&test_word);
+    println!("The result is {}" , result);
+   
+    let use_enum = IPAddress::V4(String::from("127.0.0.1"));
+
+    println!("Na use_enum {:?}", use_enum);
+
+    let dice_roll = 9;
+    match dice_roll {
+        3 => add_fancy_hat(),
+        7 => remove_fancy_hat(),
+        _ => reroll(),
+    }
+
+    let config_max = Some(3u8);
+    match config_max {
+        Some(max) => println!("The maximum is configured to be {}", max),
+        _ => (),
+    }
+
+    println!("Hello in English {}" , hello_rust::english::greetings::hello());
+    println!("Hello in English using use keyword import pattern {}" , greetings::hello());
+
 }
 
 fn takes_ownership(some_string : String) {  //some_string comes into scope
@@ -170,4 +229,14 @@ fn calculate_length(s: &String) -> usize {
 
 fn change(some_string: &mut String) {
     some_string.push_str(", world");
+}
+
+fn first_word(s : &String) -> &str {
+    let bytes =  s.as_bytes();
+    for (i , &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i] ;
+        }
+    }
+    &s[..]
 }
