@@ -230,7 +230,8 @@ fn main() {
     //     },
     // };
 
-    checker::largest_num();
+    let nums = vec![10 , 30 , 20 , 1 , 3 , 0] ; 
+    checker::largest_num(&nums);
 
 
 }

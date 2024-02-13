@@ -1,11 +1,11 @@
-pub fn largest_num() {
-    let nums = vec![10 , 30 , 20 , 1 , 3 , 0] ; 
+pub fn largest_num(nums : &[i32]) -> &i32 {
     let mut largest = &nums[0] ; 
 
-    for num in &nums {
+    for num in nums {
         if num > largest {
             largest = num ; 
         }
     }
     print!("The largest number is {}" , largest);
+    largest
 }
