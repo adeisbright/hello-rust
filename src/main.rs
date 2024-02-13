@@ -5,8 +5,12 @@ use std::io::{stdout ,stdin ,  BufWriter} ;
 use rand::Rng; 
 use std::cmp::Ordering ;
 use hello_rust::english::greetings;
-use std::fs::File ; 
-use std::io::ErrorKind;
+//use std::fs::File ; 
+// use std::io::ErrorKind;
+use hello_rust::largest::checker;
+use hello_rust::{Summary , Tweet , NewsArticle} ; 
+
+
 fn echo_name(){
     println!("I am printing out your name") ; 
 }
@@ -214,20 +218,43 @@ fn main() {
     println!("Hello in English {}" , hello_rust::english::greetings::hello());
     println!("Hello in English using use keyword import pattern {}" , greetings::hello()); 
     //panic!("Crash and Abort");
-    let greetings_file_result = File::open("hello.txt") ; 
-    let greetings_file = match greetings_file_result  {
-        Ok(file) => file ,
-        Err(error) => match error.kind() {
-            ErrorKind::NotFound => match File::create("hello.txt") {
-                Ok(fc) => fc,
-                Err(e) => panic!("Problem creating the file: {:?}", e),
-            },
-            other_error => {
-                panic!("Problem opening the file: {:?}", other_error);
-            }
-        },
+    //let greetings_file_result = File::open("hello.txt") ; 
+    // let greetings_file = match greetings_file_result  {
+    //     Ok(file) => file ,
+    //     Err(error) => match error.kind() {
+    //         ErrorKind::NotFound => match File::create("hello.txt") {
+    //             Ok(fc) => fc,
+    //             Err(e) => panic!("Problem creating the file: {:?}", e),
+    //         },
+    //         other_error => {
+    //             panic!("Problem opening the file: {:?}", other_error);
+    //         }
+    //     },
+    // };
+
+    let nums = vec![10 , 30 , 20 , 1 , 3 , 0] ; 
+    checker::largest_num(&nums);
+    let tweet = Tweet {
+        username: String::from("horse_ebooks"),
+        content: String::from(
+            "of course, as you probably already know, people",
+        ),
+        reply: false,
+        retweet: false,
     };
 
+    println!("1 new tweet: {}", tweet.summarise());
+
+    let news_article = NewsArticle {
+        location: String::from("Lekki"),
+        content: String::from(
+            "of course, as you probably already know, people",
+        ),
+        headline: String::from("Adeleke Blows"),
+        author: String::from("Adeleke Bright"),
+    };
+
+    println!("1 new article: {}", news_article.summarise());
 
 }
 
@@ -256,3 +283,4 @@ fn first_word(s : &String) -> &str {
     }
     &s[..]
 }
+
