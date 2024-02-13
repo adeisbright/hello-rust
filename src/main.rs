@@ -8,6 +8,8 @@ use hello_rust::english::greetings;
 //use std::fs::File ; 
 // use std::io::ErrorKind;
 use hello_rust::largest::checker;
+use hello_rust::{Summary , Tweet , NewsArticle} ; 
+
 
 fn echo_name(){
     println!("I am printing out your name") ; 
@@ -232,7 +234,27 @@ fn main() {
 
     let nums = vec![10 , 30 , 20 , 1 , 3 , 0] ; 
     checker::largest_num(&nums);
+    let tweet = Tweet {
+        username: String::from("horse_ebooks"),
+        content: String::from(
+            "of course, as you probably already know, people",
+        ),
+        reply: false,
+        retweet: false,
+    };
 
+    println!("1 new tweet: {}", tweet.summarise());
+
+    let news_article = NewsArticle {
+        location: String::from("Lekki"),
+        content: String::from(
+            "of course, as you probably already know, people",
+        ),
+        headline: String::from("Adeleke Blows"),
+        author: String::from("Adeleke Bright"),
+    };
+
+    println!("1 new article: {}", news_article.summarise());
 
 }
 
