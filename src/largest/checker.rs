@@ -1,6 +1,7 @@
 use std::fmt::Display ; 
 
-pub fn largest_num<T : PartialOrd + Display>(nums : &[T]) -> &T {
+pub fn largest_num<T>(nums : &[T]) -> &T  
+where T : PartialOrd + Display {
     let mut largest = &nums[0] ; 
 
     for num in nums {
