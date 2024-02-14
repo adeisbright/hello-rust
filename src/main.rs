@@ -259,6 +259,13 @@ fn main() {
     let mut my_vec = vec![1 , 2 , 3 , 4];
     my_vec.push(45);
     println!("My vec values are  {}", my_vec[3]);
+    let third = &my_vec[2] ; 
+    println!("My third value is   {}", third);
+    let third : Option<&i32>  = my_vec.get(2) ; 
+    match third {
+        Some(third) => println!("My third with some is  {third}"),
+        None => println!("There is no third element."),
+    }
 
 }
 
