@@ -255,6 +255,10 @@ fn main() {
     };
 
     println!("1 new article: {}", news_article.summarise());
+    
+    let mut my_vec = vec![1 , 2 , 3 , 4];
+    my_vec.push(45);
+    println!("My vec values are  {}", my_vec[3]);
 
 }
 
