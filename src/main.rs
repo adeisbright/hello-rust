@@ -10,6 +10,7 @@ use hello_rust::english::greetings;
 use hello_rust::largest::checker;
 use hello_rust::{Summary , Tweet , NewsArticle} ; 
 use std::collections::HashMap ; 
+use std::env ; 
 
 fn echo_name(){
     println!("I am printing out your name") ; 
@@ -304,6 +305,14 @@ fn main() {
     for (key, value) in &scores {
         println!("{key}: {value}");
     }
+
+    let args : Vec<String> = env::args().collect() ;
+   // dbg!(args);
+    let query = &args[1];
+    let file_path = &args[2];
+
+    println!("Searching for {}", query);
+    println!("In file {}", file_path);
 }
 
 fn takes_ownership(some_string : String) {  //some_string comes into scope
