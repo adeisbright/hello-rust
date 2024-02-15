@@ -266,7 +266,33 @@ fn main() {
         Some(third) => println!("My third with some is  {third}"),
         None => println!("There is no third element."),
     }
+    //Iterating over a vector 
+    for i in &mut my_vec {
+        *i += 10 ; 
+        print!("{i}");
+    }
+    // enum SpreadsheetCell {
+    //     Int(i32),
+    //     Float(f64),
+    //     Text(String),
+    // }
 
+    
+   
+    // let row = vec![
+    //     SpreadsheetCell::Int(3),
+    //     SpreadsheetCell::Text(String::from("blue")),
+    //     SpreadsheetCell::Float(10.12),
+    // ];
+    let s1 = String::from("tic");
+    let s2 : String = String::from("tac") ; 
+    let s3 = String::from("toe");
+
+    let s = format!("{s1}-{s2}-{s3}");
+    println!("{s}");
+    for c in "Зд".chars() {
+        println!("{c}");
+    }
 }
 
 fn takes_ownership(some_string : String) {  //some_string comes into scope
