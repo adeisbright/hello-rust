@@ -9,7 +9,7 @@ use hello_rust::english::greetings;
 // use std::io::ErrorKind;
 use hello_rust::largest::checker;
 use hello_rust::{Summary , Tweet , NewsArticle} ; 
-
+use std::collections::HashMap ; 
 
 fn echo_name(){
     println!("I am printing out your name") ; 
@@ -292,6 +292,17 @@ fn main() {
     println!("{s}");
     for c in "Зд".chars() {
         println!("{c}");
+    }
+    let mut scores =  HashMap::new() ;
+
+    scores.insert(String::from("Blue"), 10) ; 
+    scores.insert(String::from("Yellow"), 50) ; 
+    scores.entry(String::from("Blue")).or_insert(50); //If Blue key does not exist add it 
+    let team_name = String::from("Blue") ; 
+    let score  = scores.get(&team_name).copied().unwrap_or(0) ; 
+    println!("{score}");
+    for (key, value) in &scores {
+        println!("{key}: {value}");
     }
 }
 
