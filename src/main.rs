@@ -9,7 +9,8 @@ use hello_rust::english::greetings;
 // use std::io::ErrorKind;
 use hello_rust::largest::checker;
 use hello_rust::{Summary , Tweet , NewsArticle} ; 
-
+use std::collections::HashMap ; 
+use std::env ; 
 
 fn echo_name(){
     println!("I am printing out your name") ; 
@@ -266,7 +267,52 @@ fn main() {
         Some(third) => println!("My third with some is  {third}"),
         None => println!("There is no third element."),
     }
+    //Iterating over a vector 
+    for i in &mut my_vec {
+        *i += 10 ; 
+        print!("{i}");
+    }
+    // enum SpreadsheetCell {
+    //     Int(i32),
+    //     Float(f64),
+    //     Text(String),
+    // }
 
+    
+   
+    // let row = vec![
+    //     SpreadsheetCell::Int(3),
+    //     SpreadsheetCell::Text(String::from("blue")),
+    //     SpreadsheetCell::Float(10.12),
+    // ];
+    let s1 = String::from("tic");
+    let s2 : String = String::from("tac") ; 
+    let s3 = String::from("toe");
+
+    let s = format!("{s1}-{s2}-{s3}");
+    println!("{s}");
+    for c in "Зд".chars() {
+        println!("{c}");
+    }
+    let mut scores =  HashMap::new() ;
+
+    scores.insert(String::from("Blue"), 10) ; 
+    scores.insert(String::from("Yellow"), 50) ; 
+    scores.entry(String::from("Blue")).or_insert(50); //If Blue key does not exist add it 
+    let team_name = String::from("Blue") ; 
+    let score  = scores.get(&team_name).copied().unwrap_or(0) ; 
+    println!("{score}");
+    for (key, value) in &scores {
+        println!("{key}: {value}");
+    }
+
+    let args : Vec<String> = env::args().collect() ;
+   // dbg!(args);
+    let query = &args[1];
+    let file_path = &args[2];
+
+    println!("Searching for {}", query);
+    println!("In file {}", file_path);
 }
 
 fn takes_ownership(some_string : String) {  //some_string comes into scope
